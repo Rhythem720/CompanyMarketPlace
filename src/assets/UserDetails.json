@@ -1,0 +1,19 @@
+{
+    "data":[
+        {
+            "username":"Rhythem",
+            "email":"rhythem@gmail.com",
+            "password":"rhthem"
+        },
+        {
+            "username":"Raj",
+            "email":"raj@gmail.com",
+            "password":"raj123"
+        },
+        {
+            "username":"Ram",
+            "email":"ram@gmail.com",
+            "password":"ram"
+        }
+    ]
+}

@@ -1,0 +1,15 @@
+.item-grid {  
+    display: flex;  
+    flex-wrap: wrap;  
+    justify-content: space-around;  
+    padding: 16px;  
+  }  
+  
+  .item-card {  
+    margin: 8px;  
+    width: 300px; /* Adjust the width as necessary */  
+  }  
+  
+  .spacer {  
+    flex: 1 1 auto;  
+  }  
