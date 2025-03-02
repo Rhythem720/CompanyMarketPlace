@@ -65,6 +65,10 @@ loadUsers() {
        }        
         else{
           alert("wrong credentials");
+          this.router.navigate(['']);
+          this.loginObj={
+            username:'',password:''
+          };
         }
     }
     logout(): void {

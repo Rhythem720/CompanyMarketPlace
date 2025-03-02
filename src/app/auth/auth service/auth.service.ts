@@ -15,7 +15,6 @@ export class AuthService {
   }
 
   createUser(postData: { username: string; email: string; password: string }): Observable<any> {
-    debugger
     return this.http.post(this.apiUrl, postData);
   }
 
