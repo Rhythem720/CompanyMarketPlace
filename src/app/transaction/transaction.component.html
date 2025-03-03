@@ -1,0 +1,26 @@
+<app-header></app-header>
+<div>  
+    <h2>Transaction History</h2>  
+    <table>  
+      <thead>  
+        <tr>  
+          <th>Transaction ID</th> 
+          <th>Item Name</th>  
+          <th>Item Description</th>   
+          <th>Amount</th>  
+          <th>Date/Time</th>  
+          <th>Type</th>  
+        </tr>  
+      </thead>  
+      <tbody>  
+        <tr *ngFor="let transaction of transactions">  
+          <td>{{ transaction.transactionid }}</td>  
+          <td>{{ transaction.itemName }}</td>  
+          <td>{{ transaction.itemDescription }}</td>  
+          <td>{{ transaction.amount }}</td>  
+          <td>{{ transaction.datetime | date:'short' }}</td>  
+          <td>{{ transaction.type }}</td>  
+        </tr>  
+      </tbody>  
+    </table>  
+  </div>  
