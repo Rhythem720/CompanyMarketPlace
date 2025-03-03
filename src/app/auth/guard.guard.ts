@@ -1,8 +1,8 @@
 import { inject, Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivateFn, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
-import { Observable, retry } from 'rxjs';
 
 
+//Implementation of AUTH GURAD to make routes protected
 export const GuardGuard : CanActivateFn =(route,state)=>{
   const router=inject(Router);
   const curretnUser = localStorage.getItem("currentuser");
