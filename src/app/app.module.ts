@@ -12,14 +12,26 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatCardModule } from '@angular/material/card';  
 import { MatButtonModule } from '@angular/material/button';
 import { ItemCardComponent } from './item-card/item-card.component';
-import { HomeComponent } from './home/home.component'; 
+import { HomeComponent } from './home/home.component';
+import { TransactionComponent } from './transaction/transaction.component';
+import { SelfItemsComponent } from './self-items/self-items.component'; 
+import { MatFormFieldModule } from '@angular/material/form-field';  
+import { MatInputModule } from '@angular/material/input';
+import { ConfirmPurchaseComponent } from './confirm-purchase/confirm-purchase.component';  
+import { MatDialogModule } from '@angular/material/dialog';  
+import { MatGridListModule } from '@angular/material/grid-list';  
+
 @NgModule({
   declarations: [
     AppComponent,
     AuthComponent,
     HeaderComponent,
     ItemCardComponent,
-    HomeComponent
+    HomeComponent,
+    TransactionComponent,
+    SelfItemsComponent,
+    ConfirmPurchaseComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -27,10 +39,16 @@ import { HomeComponent } from './home/home.component';
     NoopAnimationsModule,
   FormsModule,
   HttpClientModule,
+  MatDialogModule,
+  MatGridListModule,
   //Material ANgular compnents
   MatToolbarModule,  
   MatCardModule,  
   MatButtonModule  ,
+  MatInputModule,
+  MatToolbarModule,
+  FormsModule,
+  MatFormFieldModule,
   //
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: !isDevMode(),
