@@ -1,8 +1,6 @@
-import { useAnimation } from '@angular/animations';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component,  OnInit } from '@angular/core';
-import { AuthService } from './auth service/auth.service';
 import { Router } from '@angular/router';
+import { AuthService } from './auth service/auth.service';
 @Component({
   selector: 'app-auth',
   templateUrl: './auth.component.html',
@@ -22,20 +20,29 @@ export class AuthComponent implements OnInit{
       username:"",
       password:""
     };
-  constructor(private authService: AuthService,private router:Router){}
+  constructor(private router:Router,private authservice:AuthService){}
   ngOnInit(): void {
     //const localdata = localStorage.getItem('signUpUsers');
    this.loadUsers();
     //fetch(this.url).then(res=>res.json()).then(json=>this.signupUsers=json);    
   }
 loadUsers() {
-    const localdata:any= localStorage.getItem('signupUsers');
+    const localdata:any= localStorage.getItem('signUpUsers');
     if(localdata!=null)
-       this.signupUsers=JSON.parse(localdata);
-    // this.authService.getUsers().subscribe((res:any) => {
-    //   debugger
-    //   this.signupUsers = res.data;
-    // });
+       {     
+         this.signupUsers = JSON.parse(localdata) ;  
+       }
+       else{  
+        const localdata = this.authservice.getUsers();
+        {
+          this.authservice.getUsers().subscribe((res:any) => {
+            this.signupUsers = res.data;
+            localStorage.setItem('signUpUsers',JSON.stringify(this.signupUsers))
+  
+          });
+         }
+       }
+    
   }
   register():void {
     // this.authService.createUser(this.signupObj).subscribe((res:any) => {
@@ -55,17 +62,24 @@ loadUsers() {
      // fetch(this.url).then(res=>res.json()).then(json=>this.signupUsers=json);    
      
       //const newPost = { title: 'New Post', body: 'This is a new post.', userId: 1 };  
+      const localdata:any= localStorage.getItem('signUpUsers');
+      
+      if(localdata!=null)
+       {     
+         this.signupUsers= JSON.parse(localdata)   
+       }
        const isUserExists = this.signupUsers.find(x=>x.username==this.loginObj.username && x.password==this.loginObj.password)
+       
        if(isUserExists !=undefined)
        {
         localStorage.setItem("currentuser",this.loginObj.username);
-        debugger
-         this.router.navigate(['home']);  
+        
+        this.router.navigateByUrl('/home')
         alert("user logged in");
        }        
         else{
           alert("wrong credentials");
-          this.router.navigate(['']);
+          this.router.navigateByUrl('/login')
           this.loginObj={
             username:'',password:''
           };
@@ -74,7 +88,7 @@ loadUsers() {
     logout(): void {
       this.loginObj = null;
          localStorage.removeItem('currentuser'); 
-         this.router.navigate(['/']);
+         this.router.navigateByUrl('/login')
       }
 
 }
