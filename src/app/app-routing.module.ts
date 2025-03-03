@@ -10,6 +10,7 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent,canActivate:[GuardGuard]},
   {path:'login',component:AuthComponent},
   {path:'',component:AuthComponent},
+  { path: '**', redirectTo: '' },
   { path: 'myitems', component: SelfItemsComponent ,canActivate:[GuardGuard]},
   {path:'transcations',component:TransactionComponent,canActivate:[GuardGuard]}
 ];

@@ -7,6 +7,7 @@ import { HomeserviceService } from 'src/app/home/home service/homeservice.servic
 export class SelfItemsService {
 
   constructor(private homeservice :HomeserviceService) { }
+  //reusing the home service methods 
    getItems(){
     return this.homeservice.getItems();
    }

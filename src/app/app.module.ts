@@ -11,7 +11,6 @@ import { HeaderComponent } from './header/header.component';
 import { MatToolbarModule } from '@angular/material/toolbar';  
 import { MatCardModule } from '@angular/material/card';  
 import { MatButtonModule } from '@angular/material/button';
-import { ItemCardComponent } from './item-card/item-card.component';
 import { HomeComponent } from './home/home.component';
 import { TransactionComponent } from './transaction/transaction.component';
 import { SelfItemsComponent } from './self-items/self-items.component'; 
@@ -27,7 +26,6 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     AppComponent,
     AuthComponent,
     HeaderComponent,
-    ItemCardComponent,
     HomeComponent,
     TransactionComponent,
     SelfItemsComponent,

@@ -19,6 +19,7 @@ export class TransactionService {
   
   constructor() {}  
 
+  //transaction made by the user
   addTransaction(transaction: Transaction) {  
     debugger
     
@@ -29,6 +30,7 @@ export class TransactionService {
     localStorage.setItem("transactions",JSON.stringify(this.transactions));
   }  
 
+  //Transactions for the logged in user
   getTransactions() {  
     const localdata = localStorage.getItem("transactions");
     const currentuser = localStorage.getItem("currentuser");
