@@ -7,7 +7,7 @@
 
   <div class="item-grid">  
     <!-- Sample Item Card -->  
-    <mat-card class="item-card" *ngFor="let item of sellitems | filter:term">  
+    <mat-card class="item-card" *ngFor="let item of sellitems | filter:term ">  
       <mat-card-header>  
         <mat-card-title>{{ item.itemName }}</mat-card-title>  
         <mat-card-subtitle>{{ item.amount }}</mat-card-subtitle>  

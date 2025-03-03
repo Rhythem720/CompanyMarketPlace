@@ -30,7 +30,6 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     TransactionComponent,
     SelfItemsComponent,
     ConfirmPurchaseComponent,
-    
   ],
   imports: [
     BrowserModule,
