@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, NgModule, OnInit } from '@angular/core';
  
 import { ConfirmPurchaseComponent } from '../confirm-purchase/confirm-purchase.component';
 import { MatDialog } from '@angular/material/dialog'; 
 import { TransactionService } from '../transaction/transaction service/transactionservice.service';
 import { HomeserviceService } from './home service/homeservice.service';
+
 interface Item{
   itemName:string,
   itemUrl:string,
@@ -20,6 +21,8 @@ interface Item{
 export class HomeComponent {
   items: Item[] = [];  
   sellitems:Item[]=[];
+  currentuser : string|null;
+  term:any;
   // items = [  
   //   { itemName: 'Item 1', itemUrl: 'Subtitle 1', itemDescription: 'Description of Item 1',amount:1000,itemType:"Buy".toUpperCase() ,username:"rhythem",},  
   //   { itemName: 'Item 2', itemUrl: 'Subtitle 1', itemDescription: 'Description of Item 1',amount:2000,itemType:"Sell".toUpperCase() ,username:"rhythem",},  
@@ -30,37 +33,43 @@ export class HomeComponent {
   //  sellitems:Item[]= this.items.filter(x=>x.itemType=='sell'.toUpperCase() && x.username!="rhythem123");
    constructor(public dialog: MatDialog,private transactionService: TransactionService,private homeService:HomeserviceService) {
     this.loadItems();
-   }  
-  //  ngOnInit(): void {  
-  //   this.loadItems();  
+    this.currentuser =localStorage.getItem("currentuser");
+   } 
 
-    
-  //   //this.sellitems = this.items.filter(x=>x.username!=localStorage.getItem("currentuser"));
-  // }  
+   
 
-  loadItems() :void { 
-    const currentuser=localStorage.getItem("currentuser");
+  // loadItems() :void { 
+  //   const currentuser=localStorage.getItem("currentuser");
 
-     const localdata = this.homeService.getItems();
-     if(localdata.length!=0)
-     {
-      debugger
-        this.items = localdata;
-        this.sellitems= this.items.filter(x=>x.itemType.toUpperCase()=="SELL" && x.username!=currentuser);
+  //    const localdata = this.homeService.getItems();
+  //    if(localdata.length!=0)
+  //    {
+  //     debugger
+  //       this.items = localdata;
+  //       this.sellitems= this.items.filter(x=>x.itemType.toUpperCase()=="SELL" && x.username!=currentuser);
 
-     }
-     else{
+  //    }
+  //    else{
   
-        this.homeService.fetchItems().subscribe((res:any) => {
-          debugger    
-          this.homeService.storeItems(res);
-          this.items= this.homeService.getItems()
-          this.sellitems= this.items.filter(x=>x.itemType.toUpperCase()=="SELL" && x.username!=currentuser);
+  //       this.homeService.fetchItems().subscribe((res:any) => {
+  //         debugger    
+  //         this.homeService.storeItems(res);
+  //         this.items= this.homeService.getItems()
+  //         this.sellitems= this.items.filter(x=>x.itemType.toUpperCase()=="SELL" && x.username!=currentuser);
           
-        });
-      }
+  //       });
+  //     }
      
+  // }
+  loadItems():void{
+    debugger
+    this.homeService.fetchItems().subscribe((res:any) =>{
+      this.items= res;
+      this.sellitems= this.items.filter(x=>x.itemType.toUpperCase()=="SELL" && x.username!=this.currentuser);
+    });
   }
+    
+  
    openBuyDialog(item: Item) {   
     const dialogRef = this.dialog.open(ConfirmPurchaseComponent, { 
       data : {   

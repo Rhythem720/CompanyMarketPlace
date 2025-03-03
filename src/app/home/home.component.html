@@ -1,9 +1,13 @@
 <!-- Home Component HTML -->  
 <app-header></app-header>
-  
+<div class="search-hero">
+
+  <input class="form-control" type="text" name="search" id="" class="form-control" placeholder="&#61442;Search products" [(ngModel)]="term" autocomplete="off">
+</div> 
+
   <div class="item-grid">  
     <!-- Sample Item Card -->  
-    <mat-card class="item-card" *ngFor="let item of sellitems">  
+    <mat-card class="item-card" *ngFor="let item of sellitems | filter:term">  
       <mat-card-header>  
         <mat-card-title>{{ item.itemName }}</mat-card-title>  
         <mat-card-subtitle>{{ item.amount }}</mat-card-subtitle>  

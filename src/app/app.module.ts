@@ -20,6 +20,7 @@ import { MatInputModule } from '@angular/material/input';
 import { ConfirmPurchaseComponent } from './confirm-purchase/confirm-purchase.component';  
 import { MatDialogModule } from '@angular/material/dialog';  
 import { MatGridListModule } from '@angular/material/grid-list';  
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
     BrowserModule,
     AppRoutingModule,
     NoopAnimationsModule,
+    Ng2SearchPipeModule,
   FormsModule,
   HttpClientModule,
   MatDialogModule,
