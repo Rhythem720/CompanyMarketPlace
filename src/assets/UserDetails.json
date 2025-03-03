@@ -1,14 +1,19 @@
 {
     "data":[
         {
-            "username":"Rhythem",
+            "username":"rhythem123",
             "email":"rhythem@gmail.com",
-            "password":"rhthem"
+            "password":"rhythem123"
         },
         {
             "username":"Raj",
             "email":"raj@gmail.com",
             "password":"raj123"
+        },
+        {
+            "username":"rhythem",
+            "email":"raj@gmail.com",
+            "password":"rhythem"
         },
         {
             "username":"Ram",
