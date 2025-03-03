@@ -1,0 +1,109 @@
+<!-- <div>  
+    <h2>User Items</h2>  
+  
+    <form (ngSubmit)="addItem()">  
+      <div>  
+        <input type="text" [(ngModel)]="newItem.itemname" name="title" placeholder="Item Title" required />  
+      </div>  
+      <div>  
+        <input type="text" [(ngModel)]="newItem.description" name="description" placeholder="Item Description" required />  
+      </div>  
+      <button type="submit">{{ editMode ? 'Update Item' : 'Add Item' }}</button>  
+      <button type="button" (click)="resetForm()">Cancel</button>  
+    </form>  
+  
+    <ul>  
+      <li *ngFor="let item of items; let i = index">  
+        <strong>{{ item.itemname }}</strong>: {{ item.description }}  
+        <button (click)="editItem(i)">Edit</button>  
+        <button (click)="deleteItem(i)">Delete</button>  
+      </li>  
+    </ul>  
+  </div>   -->
+  <app-header></app-header>
+  <!-- <div>  
+    <h2>User Items</h2>  
+  
+    <form (ngSubmit)="addItem()">  
+      <mat-form-field appearance="fill">  
+        <mat-label>Item Title</mat-label>  
+        <input matInput [(ngModel)]="newItem.itemname" name="title" required />  
+      </mat-form-field>  
+      
+      <mat-form-field appearance="fill">  
+        <mat-label>Item Description</mat-label>  
+        <textarea matInput [(ngModel)]="newItem.description" name="description" required></textarea>  
+      </mat-form-field>  
+  
+      <button mat-raised-button color="primary">{{ editMode ? 'Update Item' : 'Add Item' }}</button>  
+      <button mat-button (click)="resetForm()">Cancel</button>  
+    </form>  
+  
+    <div class="item-grid">  
+      <mat-card *ngFor="let item of items; let i = index" class="item-card">  
+        <mat-card-header>  
+          <mat-card-title>{{ item.itemname }}</mat-card-title>  
+        </mat-card-header>  
+        <mat-card-content>  
+          <p>{{ item.description }}</p>  
+        </mat-card-content>  
+        <mat-card-actions>  
+          <button mat-button (click)="editItem(i)">Edit</button>  
+          <button mat-button color="warn" (click)="deleteItem(i)">Delete</button>  
+        </mat-card-actions>  
+      </mat-card>  
+    </div>  
+  </div>   -->
+
+  <div class="container">  
+    <div class="item-list">  
+      <h2>Your Items</h2>  
+      <mat-card *ngFor="let item of useritems; let i = index" class="item-card">  
+        <mat-card-header>  
+          <mat-card-title>{{ item.itemName }}</mat-card-title>  
+          <img mat-card-image src={{item.itemUrl}} alt="Photo loaded failed">
+        </mat-card-header>  
+        <mat-card-content>  
+          <p>{{ item.itemDescription }}</p>  
+          <p><strong>Amount: {{ item.amount }}</strong></p>  
+        </mat-card-content> 
+     
+        <mat-card-actions *ngIf="item.itemType=='SELL'">  
+          
+          <button mat-button (click)="editItem(i)">Edit</button>  
+          <button mat-button (click)="deleteItem(i)" style="color: red;">Delete</button>  
+        </mat-card-actions>  
+        <mat-card-actions *ngIf="item.itemType=='BOUGHT'">   
+          <mat-grid-tile-footer>Item is Already sold</mat-grid-tile-footer>
+        </mat-card-actions>
+      </mat-card>  
+    </div>  
+  
+    <div class="add-item-form">  
+      <h2>{{ editMode ? 'Edit Item' : 'Add New Item' }}</h2>  
+      <form (ngSubmit)="addItem()" #itemForm="ngForm">  
+        <mat-form-field appearance="fill">  
+          <mat-label>Item Name*</mat-label>  
+          <input matInput [readonly]="editMode" required [(ngModel)]="newItem.itemName" name="itemname">  
+        </mat-form-field>  
+  
+        <mat-form-field appearance="fill">  
+          <mat-label>Item URL*</mat-label>  
+          <input matInput required [(ngModel)]="newItem.itemUrl" name="itemUrl">  
+        </mat-form-field>  
+        
+  
+        <mat-form-field appearance="fill">  
+          <mat-label>Item Description*</mat-label>  
+          <textarea matInput required [(ngModel)]="newItem.itemDescription" name="description"></textarea>  
+        </mat-form-field>  
+  
+        <mat-form-field appearance="fill">  
+          <mat-label>Amount*</mat-label>  
+          <input matInput required type="number" [(ngModel)]="newItem.amount" name="amount">  
+        </mat-form-field>  
+  
+        <button mat-raised-button color="primary" type="submit">{{ editMode ? 'Update Item' : 'Add Item' }}</button>  
+      </form>  
+    </div>  
+  </div>  
